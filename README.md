@@ -11,6 +11,7 @@ Let's assume we have the following resources deployed in an AWS environment:
 - An AWS SecretsManager secret containing credentials for the RDS database instance.
 - A DynamoDB table, which records when a customer was last active on the fictional company's website. A _customer_id_ field is used to link a DynamoDB record with a transaction.
 - A CloudWatch Logs log group, stores a fraud score for the transaction, representing how likely the transaction is to be fraudulent with a rating between 0 and 100.
+- An AWS Lambda configured to process new objects as they are added to the transactions prefix in the Amazon S3 bucket using Amazon EventBridge.
 
 
 
