@@ -13,7 +13,7 @@ Let's assume we have the following resources deployed in an AWS environment:
 - A CloudWatch Logs log group, stores a fraud score for the transaction, representing how likely the transaction is to be fraudulent with a rating between 0 and 100.
 - An AWS Lambda configured to process new objects as they are added to the transactions prefix in the Amazon S3 bucket using Amazon EventBridge.
 
-  The goal is to assemble a Lambda function that can be used to extract the data and store it in S3 a in the Parquet format. This represents the Extract step of an Extract, Transform, and Load (ETL) pipeline.
+The goal is to assemble a Lambda function that can be used to extract the data and store it in S3 in the Parquet format. This represents the Extract step of an Extract, Transform, and Load (ETL) pipeline.
 
 The _jsonfilepath_ Jupyter notebook returns a list of all JSON files in the transaction prefix.
   
