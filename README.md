@@ -29,5 +29,19 @@ The _fetchdata_ Jupyter notebook defines a function that combines data from mult
 
 The result is a single DataFrame containing all relevant information about the transaction.
 
+## Writing Extracted Transaction Data to S3
+
+The next step after creating a data frame with the combined transaction data, is to load the data in a location where it can be used or transformed further.
+
+It's common when working with data pipelines to use a columnar format to store data. Parquet is an example of a columnar format. Using it has the following benefits:
+
+- It's usually quicker to read than row or record based alternatives
+- Enables efficient access of just the required columns
+- Columnar data formats usually require less disk space than row or record based options
+  
+In AWS, Amazon S3 is often used to store data either as a final or intermediate step in a data pipeline. It's also common to organize the data in a way that makes reading and querying it easier, this is called partitioning.
+A good general way to partition data is to do so by date, since looking up data by date ranges is common when querying data.
+
+The _loadfunction_ Jupyter notebook defines a function named _load_data_ that takes a transaction data frame, an S3 bucket name, and a prefix. The data frame is written to a location in the bucket based upon the current date.
 
 
