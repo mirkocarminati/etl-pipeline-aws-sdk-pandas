@@ -44,4 +44,21 @@ A good general way to partition data is to do so by date, since looking up data 
 
 The _loadfunction_ Jupyter notebook defines a function named _load_data_ that takes a transaction data frame, an S3 bucket name, and a prefix. The data frame is written to a location in the bucket based upon the current date.
 
+## Developing a Lambda handler
 
+The last part of the lambda function development is the handler, which serves as the entry point into the function's code.
+
+The _lambdahandler_ Jupyter notebook does the following:
+
+- Extracts the bucket name and object key from the event payload message
+- Checks if the object key ends with .json 
+- Calls the extract_data and load_data functions you defined previously
+
+We can define a sample EventBridge event and call the _lambda_handler_ function, which uses a Boto3 S3 client to list objects under the extracted prefix in the Amazon S3 bucket.
+
+```
+lambda_handler(sample_event, None)
+
+response = boto3.client('s3').list_objects(Bucket=bucket_name, Prefix='extracted/')
+print([obj['Key'] for obj in response['Contents']])
+```
