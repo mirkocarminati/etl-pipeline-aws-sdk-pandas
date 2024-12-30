@@ -62,3 +62,8 @@ lambda_handler(sample_event, None)
 response = boto3.client('s3').list_objects(Bucket=bucket_name, Prefix='extracted/')
 print([obj['Key'] for obj in response['Contents']])
 ```
+
+## Architecture
+
+
+![Untitled Diagram drawio](https://github.com/user-attachments/assets/37c4dbc1-de02-475f-8b6f-29b6078ff8e3)
